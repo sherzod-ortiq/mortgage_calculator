@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html id="ng-app" data-ng-app="app" data-ng-controller="AppController" >
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<head>
+  	  <title>Mortgage calculator</title>
+	
+	      <link rel = "stylesheet"  href = "https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+	      <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+	      <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+	      <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+	      <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+	      <script src = "https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+
+	  	  <link rel="stylesheet" href="angular-range-slider.css">
+	  	  <link rel="stylesheet" href="mortCalc.css">
+	  	  <script src="angular-range-slider.min.js"></script>
+	  	  <script src="controllers.js"></script>
+	</head>
+
+<body>
+	    <div id = "calculatorWrapper" layout = "row" layout-xs = "column"  layout-align = "center" layout-wrap>
+
+				<div id = "results"  flex = "100" layout = "row" layout-xs = "column"  layout-align = "center"  layout-nowrap>
+					<div class = "resultsGrid" flex = "33" flex-xs = "100">Ежемесячный платеж <br><span class = "price">{{monPaym}} &#8381;</span></div>
+					<div class = "resultsGrid" flex = "33" flex-xs = "100">Переплата по кредиту <br><span class = "price">{{intRateSum | number:0}} &#8381;</span></div>
+					<div class = "resultsGrid" flex = "33" flex-xs = "100">Общая стоимость <br><span class = "price">{{totalLoan | number:0}} &#8381;</span></div>
+				</div>
+
+				<div id = "errorMessage" flex = "100">{{errorMessage}}</div>
+				
+  		  <div class = "mainBox" flex = "50" flex-xs = "100" >
+					<div class = "header1">
+						СТОИМОСТЬ НЕДВИЖИМОСТИ<br>
+					</div>
+
+ 					<div class = "inputBox">
+    				<input class = "input1" type="text"  data-ng-focus = "onFocus(0)" data-ng-blur = "onBlur(0)" data-ng-model = "items[0].value" >&#8381; 
+	 				</div>
+
+             	 <div  data-range-slider
+                     data-floor="0"
+                     data-ceiling="10000000"
+                     data-step="{{step[0]}}"
+                     data-precision="0"
+                     data-highlight="left"
+                     data-ng-model="items[0].value">
+							</div>
+				</div>
+
+
+
+  		  <div class = "mainBox" flex = "50" flex-xs = "100" >
+					<div class = "header1">
+						ПЕРВОНАЧАЛЬНЫЙ ВЗНОС
+					</div>
+
+ 					<div class = "inputBox">
+    				<input class = "input1" type="text" data-ng-focus = "onFocus(1)" data-ng-blur = "onBlur(1)" data-ng-model = "items[1].value">&#8381;
+  				</div>
+
+             	 <div  data-range-slider
+                     data-floor= "0"
+                     data-ceiling="10000000"
+                     data-step="{{step[1]}}"
+                     data-precision="0"
+                     data-highlight="left"
+                     data-ng-model="items[1].value">
+							</div>
+				</div>
+
+
+  		  <div class = "mainBox" flex = "50" flex-xs = "100" >
+					<div class = "header1">
+						СРОК КРЕДИТОВАНИЯ
+					</div>
+
+ 					<div class = "inputBox">
+    				<input class = "input1" type="text" data-ng-model = "items[2].value"><span style = "font-size: 16px;">лет</span>
+  				</div>
+
+             	 <div data-range-slider
+                     data-floor= "0"
+                     data-ceiling="25"
+                     data-step="{{step[2]}}"
+                     data-precision="0"
+                     data-highlight="left"
+                     data-ng-model="items[2].value">                    
+							</div>
+				</div>
+
+
+  		  <div class = "mainBox" flex = "50" flex-xs = "100" >
+					<div class = "header1">
+						ГОДОВАЯ ПРОЦЕНТНАЯ СТАВКА
+					</div>
+
+ 					<div class = "inputBox">
+    				<input class = "input1" type="text"  data-ng-focus = "onFocus(3)" data-ng-blur = "onBlur(3)"  data-ng-model = "items3" ng-change = "onChange(items3)" >%
+  				</div>
+
+             	 <div data-range-slider
+                     data-floor= "0"
+                     data-ceiling="30"
+                     data-step="{{step[3]}}"
+                     data-precision="2"
+                     data-highlight="left"
+                     data-ng-model="items[3].value">                    
+							</div>
+
+
+				</div>
+
+					<div flex = "50" flex-xs = "100"  class = "buttonBox">
+						<button class = "{{a1}} button" ng-click="a1 = 'activeButton'; a2 = ''; type = true;">Аннуитетный платеж</button>
+					</div>
+					<div flex = "50" flex-xs = "100"  class = "buttonBox">
+	 					<button class = "{{a2}} button" ng-click="a1 = ''; a2 = 'activeButton'; type = false;">Дифференцированный платеж</button>
+					</div>
+
+			</div>
+
+</body>
+</html>
+

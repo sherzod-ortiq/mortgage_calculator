@@ -1,0 +1,111 @@
+
+.button
+{
+  background-color: white;
+  border: 2px solid transparent;
+  color: #13b6ff;
+  padding: 1px;
+  cursor: pointer;
+	font-size: 17px;
+	width:100%;
+	box-sizing: border-box;
+}
+
+.button:hover
+{
+	color: black;
+}
+
+.button::-moz-focus-inner
+{
+	border-color: transparent;
+}
+
+.button:focus
+{
+	outline: none;
+}
+
+.activeButton
+{
+  border-color:#13b6ff;
+	border-radius: 5%;
+	color: black;
+}
+
+.header1
+{
+	box-sizing: border-box;
+	color: #13b6ff;
+	font-size: 15px;
+	padding: 2px;
+}
+
+.mainBox
+{
+	padding: 5px;
+}
+
+.inputBox
+{
+	width:100%;
+	border: 1px solid #13b6ff;	
+	color: #13b6ff;
+	font-size: 20px;
+	background-color: white;
+	box-sizing: border-box;
+}
+
+.buttonBox
+{
+	padding:5px;
+}
+
+.input1
+{
+ -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+	width:87%;
+	height: 30px;	
+	border:0px;
+	margin:0px;
+	padding:5px;
+	background-color: white;
+	box-sizing: border-box;
+}
+
+#results
+{
+	width:100%;
+	color: #13b6ff;
+	background-color:#F2F2F2;
+	text-align: center;
+}
+
+.resultsGrid
+{
+	color: #6E6E6E;
+	font-size: 16px;
+	text-align: center;
+	padding:5px;			
+}
+
+.price
+{
+	color: green;
+}
+
+#calculatorWrapper
+{
+	border: 2px solid #13b6ff;
+	max-width: 700px;
+}
+
+#errorMessage
+{
+	color: red;
+	font-size: 13px;
+	text-align: center;
+}
+
+
